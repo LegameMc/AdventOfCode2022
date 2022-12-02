@@ -5,17 +5,17 @@ import com.gmail.legamemc.adventofcode2022.Challenge;
 import java.io.*;
 import java.util.Arrays;
 
-public class Day1 implements Challenge {
+public class Day1 implements Challenge<Integer> {
 
 
     @Override
-    public void execute() throws Exception{
+    public Integer execute() throws Exception{
         int[] tops = new int[3];
         InputStream inputStream = getClass().getResourceAsStream("/Day1Input.txt");
 
         if(inputStream == null){
             System.out.println("File not found");
-            return;
+            return -1;
         }
 
         InputStreamReader reader = new InputStreamReader(inputStream);
@@ -38,8 +38,14 @@ public class Day1 implements Challenge {
             adjustTop(tops, sum);
         }
 
-        System.out.println(Arrays.toString(tops));
-        System.out.println(Arrays.stream(tops).sum());
+        //System.out.println(Arrays.toString(tops));
+        int total = 0;
+
+        for(int x = 0; x < tops.length; x++){
+            total += tops[x];
+        }
+
+        return total;
     }
 
     private void adjustTop(int[] arr, int value){

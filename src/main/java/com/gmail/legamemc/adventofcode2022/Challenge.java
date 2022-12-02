@@ -1,6 +1,6 @@
 package com.gmail.legamemc.adventofcode2022;
 
-public interface Challenge {
+public interface Challenge<T> {
 
-    void execute() throws Exception;
+    T execute() throws Exception;
 }
