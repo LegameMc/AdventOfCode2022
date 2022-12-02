@@ -1,37 +1,41 @@
 package com.gmail.legamemc.adventofcode2022;
 
 import com.gmail.legamemc.adventofcode2022.questions.Day1;
+import com.gmail.legamemc.adventofcode2022.questions.Day2;
 
 public class Program {
-    private final static int EXECUTE_TEST_COUNT = 20000;
+    private final static int EXECUTE_TEST_COUNT = 10;
+
+    private final static boolean TEST_PERFORMANCE = false;
     private final static boolean SHOW_TIME_PER_EXECUTE = false;
     public static void main(String[] args) throws Exception {
-        Challenge<?> challenge = new Day1();
+        Challenge<?> challenge = new Day2();
 
         Object result = challenge.execute();
 
         System.out.println("Result: " + result);
 
-        System.out.println("Calculating average execute time...");
+        if(TEST_PERFORMANCE){
+            System.out.println("Calculating average execute time...");
+            long time = 0;
 
-        long time = 0;
-
-        for(int x = 0; x < EXECUTE_TEST_COUNT; x++){
-            long timeTaken = calculateExecuteTime(() -> {
-                try {
-                    challenge.execute();
-                } catch (Exception e) {
-                    throw new RuntimeException(e);
+            for(int x = 0; x < EXECUTE_TEST_COUNT; x++){
+                long timeTaken = calculateExecuteTime(() -> {
+                    try {
+                        challenge.execute();
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
+                });
+                if(SHOW_TIME_PER_EXECUTE){
+                    System.out.println("Time taken at #" + x + ": " + (timeTaken/1000000.0) + "ms");
                 }
-            });
-            if(SHOW_TIME_PER_EXECUTE){
-                System.out.println("Time taken at #" + x + ": " + (timeTaken/1000000.0) + "ms");
+                time += timeTaken;
             }
-            time += timeTaken;
-        }
 
-        System.out.format("\nTotal time taken for " + EXECUTE_TEST_COUNT + " test: %.4fms\n", ((time /1000000.0)));
-        System.out.format("\nAverage execute time: %.4fms\n", ((time / (double) EXECUTE_TEST_COUNT) /1000000.0));
+            System.out.format("\nTotal time taken for " + EXECUTE_TEST_COUNT + " test: %.4fms\n", ((time /1000000.0)));
+            System.out.format("\nAverage execute time: %.4fms\n", ((time / (double) EXECUTE_TEST_COUNT) /1000000.0));
+        }
 
     }
 
