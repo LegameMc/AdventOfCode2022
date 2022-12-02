@@ -30,6 +30,7 @@ public class Program {
             time += timeTaken;
         }
 
+        System.out.format("\nTotal time taken for " + EXECUTE_TEST_COUNT + " test: %.4fms\n", ((time /1000000.0)));
         System.out.format("\nAverage execute time: %.4fms\n", ((time / (double) EXECUTE_TEST_COUNT) /1000000.0));
 
     }
