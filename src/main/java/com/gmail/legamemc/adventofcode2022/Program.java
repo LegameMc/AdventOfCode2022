@@ -4,6 +4,7 @@ import com.gmail.legamemc.adventofcode2022.questions.Day1;
 
 public class Program {
     private final static int EXECUTE_TEST_COUNT = 20000;
+    private final static boolean SHOW_TIME_PER_EXECUTE = false;
     public static void main(String[] args) throws Exception {
         Challenge<?> challenge = new Day1();
 
@@ -23,7 +24,9 @@ public class Program {
                     throw new RuntimeException(e);
                 }
             });
-            System.out.println("Time taken at #" + x + ": " + (timeTaken/1000000.0) + "ms");
+            if(SHOW_TIME_PER_EXECUTE){
+                System.out.println("Time taken at #" + x + ": " + (timeTaken/1000000.0) + "ms");
+            }
             time += timeTaken;
         }
 
