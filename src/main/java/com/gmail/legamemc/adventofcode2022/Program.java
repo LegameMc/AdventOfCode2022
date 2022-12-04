@@ -3,16 +3,17 @@ package com.gmail.legamemc.adventofcode2022;
 import com.gmail.legamemc.adventofcode2022.questions.Day1;
 import com.gmail.legamemc.adventofcode2022.questions.Day2;
 import com.gmail.legamemc.adventofcode2022.questions.Day3;
+import com.gmail.legamemc.adventofcode2022.questions.Day4;
 
 import java.util.concurrent.TimeUnit;
 
 public class Program {
     private final static int EXECUTE_TEST_COUNT = 3;
 
-    private final static boolean TEST_PERFORMANCE = true;
-    private final static boolean SHOW_TIME_PER_EXECUTE = true;
+    private final static boolean TEST_PERFORMANCE = false;
+    private final static boolean SHOW_TIME_PER_EXECUTE = false;
     public static void main(String[] args) throws Exception {
-        Challenge<?> challenge = new Day3();
+        Challenge<?> challenge = new Day4();
 
         Object result = challenge.execute();
 
