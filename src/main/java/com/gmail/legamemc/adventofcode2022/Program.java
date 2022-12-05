@@ -1,9 +1,6 @@
 package com.gmail.legamemc.adventofcode2022;
 
-import com.gmail.legamemc.adventofcode2022.questions.Day1;
-import com.gmail.legamemc.adventofcode2022.questions.Day2;
-import com.gmail.legamemc.adventofcode2022.questions.Day3;
-import com.gmail.legamemc.adventofcode2022.questions.Day4;
+import com.gmail.legamemc.adventofcode2022.questions.*;
 
 import java.util.concurrent.TimeUnit;
 
@@ -13,7 +10,7 @@ public class Program {
     private final static boolean TEST_PERFORMANCE = false;
     private final static boolean SHOW_TIME_PER_EXECUTE = false;
     public static void main(String[] args) throws Exception {
-        Challenge<?> challenge = new Day4();
+        Challenge<?> challenge = new Day5();
 
         Object result = challenge.execute();
 
@@ -37,10 +34,10 @@ public class Program {
                 time += timeTaken;
             }
 
-           /* System.out.format("\nTotal time taken for " + EXECUTE_TEST_COUNT + " test: %.4fms\n", ((time /1000000.0)));
-            System.out.format("\nAverage execute time: %.4fms\n", ((time / (double) EXECUTE_TEST_COUNT) /1000000.0));*/
-            System.out.format("\nTotal time taken for " + EXECUTE_TEST_COUNT + " test: %dms\n", TimeUnit.NANOSECONDS.toMillis(time));
-            System.out.format("\nAverage execute time: %.4fms\n", (TimeUnit.NANOSECONDS.toMillis(time) / (double) EXECUTE_TEST_COUNT));
+            System.out.format("\nTotal time taken for " + EXECUTE_TEST_COUNT + " test: %.4fms\n", ((time /1000000.0)));
+            System.out.format("\nAverage execute time: %.4fms\n", ((time / (double) EXECUTE_TEST_COUNT) /1000000.0));
+//            System.out.format("\nTotal time taken for " + EXECUTE_TEST_COUNT + " test: %dms\n", TimeUnit.NANOSECONDS.toMillis(time));
+//            System.out.format("\nAverage execute time: %.4fms\n", (TimeUnit.NANOSECONDS.toMillis(time) / (double) EXECUTE_TEST_COUNT));
         }
 
     }

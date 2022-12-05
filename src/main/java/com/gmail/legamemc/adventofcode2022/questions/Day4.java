@@ -16,7 +16,7 @@ public class Day4 implements Challenge<Integer> {
 
         int fullyContained = 0;
         while((line = reader.readLine()) != null){
-            System.out.println(line);
+            //System.out.println(line);
             String[] split = line.split(",");
 
             int[][] tda = new int[2][3];
@@ -28,7 +28,7 @@ public class Day4 implements Challenge<Integer> {
                 if(tda[0][2] > tda[1][2]){
                     //System.out.println("A longer than B");
                     if(tda[1][0] >= tda[0][0] && tda[1][1] <= tda[0][1]){
-                        System.out.println();
+                        //System.out.println();
                         fullyContained++;
                     }
                 }else if(tda[0][2] == tda[1][2]){
