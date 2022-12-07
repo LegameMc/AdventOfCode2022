@@ -3,7 +3,6 @@ package com.gmail.legamemc.adventofcode2022.questions;
 import com.gmail.legamemc.adventofcode2022.Challenge;
 import com.gmail.legamemc.adventofcode2022.Utils;
 
-import java.awt.image.TileObserver;
 import java.io.BufferedReader;
 import java.util.*;
 
@@ -40,9 +39,10 @@ public class Day7 implements Challenge<Integer> {
                             currentDirectory = currentDirectory.getDirectory(split[1]);
                         }
                         break;
-                    case "ls":
+/*                    case "ls":
                         currentDirectory.list();
-                        break;
+                        break;*/
+                    default: break;
                 }
             }else{
                 String[] split = line.split(" ");
@@ -58,7 +58,7 @@ public class Day7 implements Challenge<Integer> {
 
         currentDirectory = rootDirectory;
 
-        showDetail(0, currentDirectory);
+        //showAsTree(0, currentDirectory);
 
         int remainingSpace = (70000000 - rootDirectory.getSize());
         int requiredSpaceToUpdate = 30000000 - remainingSpace;
@@ -88,9 +88,9 @@ public class Day7 implements Challenge<Integer> {
                 checked.add(currentDirectory);
                 currentDirectory = currentDirectory.getParent();
             }*/
-            System.out.println("Currently in Directory: " + currentDirectory.getDirectoryName() + " Dir count: " + currentDirectory.getDirectories().size() + ", File Count: " + currentDirectory.getFiles().size());
+            //System.out.println("Currently in Directory: " + currentDirectory.getDirectoryName() + " Dir count: " + currentDirectory.getDirectories().size() + ", File Count: " + currentDirectory.getFiles().size());
             if(checked.contains(currentDirectory) && checked.containsAll(currentDirectory.getDirectories())){
-                System.out.println("  All the directory in " + currentDirectory.getDirectoryName() + " has been checked, going to parent " + (currentDirectory.getParent() == null ? "null" : currentDirectory.getParent().getDirectoryName()));
+                //System.out.println("  All the directory in " + currentDirectory.getDirectoryName() + " has been checked, going to parent " + (currentDirectory.getParent() == null ? "null" : currentDirectory.getParent().getDirectoryName()));
                 checked.add(currentDirectory);
                 currentDirectory = currentDirectory.getParent();
                 continue;
@@ -109,7 +109,7 @@ public class Day7 implements Challenge<Integer> {
                 dtdSize = directoryToDelete.getSize();
             }else if(size > requiredSpaceToUpdate){
                 if(size - requiredSpaceToUpdate < dtdSize - requiredSpaceToUpdate){
-                    System.out.println("Changed from " + dtdSize + " to " + size);
+                    //System.out.println("Changed from " + dtdSize + " to " + size);
                     directoryToDelete = currentDirectory;
                     dtdSize = directoryToDelete.getSize();
                 }
@@ -117,7 +117,7 @@ public class Day7 implements Challenge<Integer> {
 
 
             if(size <= 100000){
-                System.out.println("  Added " + currentDirectory.getDirectoryName() + " size to total: " + size);
+                //System.out.println("  Added " + currentDirectory.getDirectoryName() + " size to total: " + size);
                 total += size;
                 checked.add(currentDirectory);
             }
@@ -135,34 +135,20 @@ public class Day7 implements Challenge<Integer> {
             //Thread.sleep(500);
         }
 
-        System.out.println("Remaining Space: " + remainingSpace);
-        System.out.println("Required Space: " + requiredSpaceToUpdate);
+        //System.out.println("Remaining Space: " + remainingSpace);
+        //System.out.println("Required Space: " + requiredSpaceToUpdate);
 
         return PART == 1 ? total : directoryToDelete.getSize();
     }
 
-    private void showDetail(int x, Directory directory){
+    private void showAsTree(int x, Directory directory){
         String indent = "  ".repeat(x);
         System.out.println(indent + "> " + directory.getDirectoryName() + " (" + directory.getSize() + ")");
         for(Directory dir : directory.getDirectories()){
-            showDetail(x + 1, dir);
+            showAsTree(x + 1, dir);
         }
         directory.getFiles().forEach( (name, size) -> System.out.println(indent + "  - " + name + " (" + size + ")"));
     }
-
-    private String toPath(Stack<String> stack){
-        StringJoiner joiner = new StringJoiner("/");
-        for(String p : stack){
-            joiner.add(p);
-        }
-        return joiner.toString();
-    }
-
-    public int a(Directory directory){
-
-        return 0;
-    }
-
 
     private class Directory{
         private final String directoryName;
