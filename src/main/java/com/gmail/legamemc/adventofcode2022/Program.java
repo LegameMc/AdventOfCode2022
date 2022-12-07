@@ -2,7 +2,6 @@ package com.gmail.legamemc.adventofcode2022;
 
 import com.gmail.legamemc.adventofcode2022.questions.*;
 
-import java.util.concurrent.TimeUnit;
 
 public class Program {
     private final static int EXECUTE_TEST_COUNT = 5;
@@ -10,7 +9,7 @@ public class Program {
     private final static boolean TEST_PERFORMANCE = false;
     private final static boolean SHOW_TIME_PER_EXECUTE = false;
     public static void main(String[] args) throws Exception {
-        Challenge<?> challenge = new Day6();
+        Challenge<?> challenge = new Day7();
 
         Object result = challenge.execute();
 
