@@ -55,13 +55,13 @@ public class Day7 implements Challenge<Integer> {
 
         Set<Directory> checked = new HashSet<>();
         int total = 0;
-
         currentDirectory = rootDirectory;
 
         //showAsTree(0, currentDirectory);
 
         int remainingSpace = (70000000 - rootDirectory.getSize());
         int requiredSpaceToUpdate = 30000000 - remainingSpace;
+
         Directory directoryToDelete = null;
         int dtdSize = 0;
 
@@ -104,17 +104,13 @@ public class Day7 implements Challenge<Integer> {
                 continue;
             }
 
-            if(directoryToDelete == null && size > requiredSpaceToUpdate){
-                directoryToDelete = currentDirectory;
-                dtdSize = directoryToDelete.getSize();
-            }else if(size > requiredSpaceToUpdate){
-                if(size - requiredSpaceToUpdate < dtdSize - requiredSpaceToUpdate){
+            if(size > requiredSpaceToUpdate){
+                if(dtdSize == 0 || size < dtdSize){
                     //System.out.println("Changed from " + dtdSize + " to " + size);
                     directoryToDelete = currentDirectory;
-                    dtdSize = directoryToDelete.getSize();
+                    dtdSize = size;
                 }
             }
-
 
             if(size <= 100000){
                 //System.out.println("  Added " + currentDirectory.getDirectoryName() + " size to total: " + size);

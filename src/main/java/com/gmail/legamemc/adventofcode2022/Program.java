@@ -9,7 +9,7 @@ public class Program {
     private final static boolean TEST_PERFORMANCE = false;
     private final static boolean SHOW_TIME_PER_EXECUTE = false;
     public static void main(String[] args) throws Exception {
-        Challenge<?> challenge = new Day7();
+        Challenge<?> challenge = new Day8();
 
         Object result = challenge.execute();
 
